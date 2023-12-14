@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中等部 チームE</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+</head>
+
+<body>
+
+    <div id="splash">
+        <div id="splash_text"></div>
+        <div class="loader_cover loader_cover-up"></div><!--上に上がるエリア-->
+        <div class="loader_cover loader_cover-down"></div><!--下に下がるエリア-->
+    </div>
+
+    <div class="menu-container">
+        <div class="menu">
+            <ul class="menu-link">
+                <li><a href="#problem">課題</a></li>
+                <li><a href="#idea">アイデア</a></li>
+                <li><a href="#feature">特徴</a></li>
+                <li><a href="#effect">影響</a></li>
+                <li><a href="#">English</a></li>
+            </ul>
+        </div>
+        <div id="container">
+            <header>
+                <div class="wrapper">
+                    <div class="btn-wrapper">
+                        <div class="openbtn">
+                            <div class="openbtn-area"><span></span><span></span><span></span></div>
+                        </div>
+                        <h1>中等部 チームE</h1>
+                    </div>
+                    <ul id="page-link">
+                        <li><a href="#problem">課題</a></li>
+                        <li><a href="#idea">アイデア</a></li>
+                        <li><a href="#feature">特徴</a></li>
+                        <li><a href="#effect">影響</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <main>
+                <div id="mainvisual">
+                    <div class="title-container">
+                        <p>観光でも<br>いつもの礼拝を</p>
+                        <h1>レイバス</h1>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div id="problem" class="fadeUpTrigger">
+                        <div class="texts">
+                            <h2>思いゆくまま観光できず</h2>
+                            <p>イスラム教を信仰する「ムスリム」の訪日観光客数は年々増加しています。しかし、彼らが必要とする礼拝所は日本に多くなく、観光を思う存分楽しむことが出来ないという現状があります。
+                            </p>
+                        </div>
+                        <img class="img-1"
+                            src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/8d1685bc-1891-4745-93e3-9c705bb950d9"
+                            alt="">
+                        <img class="img-2"
+                            src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/dc5e0513-a3c8-4409-8a9d-868fce641fe5"
+                            alt="">
+                    </div>
+                    <div class="parallax-container">
+                        <div id="data" class="fadeUpTrigger">
+                            <img src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/ef264385-6564-4d88-9f3a-25323406da46"
+                                alt="">
+                            <div class="texts">
+                                <h2>まだまだ足りない礼拝所</h2>
+                                <p>実際に、日本国内の礼拝所は年々増加してきているものの、全国に未だ100箇所ほどしかなく、十分とは言えません。</p>
+                            </div>
+                        </div>
+                        <div class="wave-container">
+                            <div class="wave">
+                                <canvas id="waveCanvas"></canvas>
+                            </div>
+                            <div class="second-wrapper">
+                                <div id="idea" class="fadeUpTrigger">
+                                    <div class="texts">
+                                        <h2>礼拝所×バス<br class="responsive">「レイバス」</h2>
+                                        <p>その課題を解決すべく私たちは、礼拝所とバスを掛け合わせた「レイバス」というものを作り、各地のイベント会場で簡易礼拝所として利用してもらおうと考えました。
+                                        </p>
+                                    </div>
+                                    <div class="model-wrap">
+                                        <model-viewer class="model" loading="eager" camera-controls auto-rotate src="https://dl.dropbox.com/scl/fi/eqppvhj9pfzm7it3ei7ys/isuzu-1.glb?rlkey=jzv5svlv2d7qfjffqpqs47ao9&dl=0"  exposure="0.6" alt="pancake"></model-viewer>
+                                    </div>
+                                </div>
+                                <div id="feature" class="fadeUpTrigger">
+                                    <h2>いつもの<br class="responsive">礼拝クオリティを</h2>
+                                    <div class="wrapper">
+                                        <div class="block">
+                                            <img src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/301a9f5f-9a62-4b89-931b-3534306c5683"
+                                                alt="">
+                                            <div class="texts">
+                                                <h3>「ウドゥ」ができる</h3>
+                                                <p>簡易シャワーをバスに搭載することで、礼拝前のお清め「ウドゥ」をすることができます。</p>
+                                            </div>
+                                        </div>
+                                        <div class="block">
+                                            <img src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/e68952aa-5905-4b84-a34d-e3d55c698ac0"
+                                                alt="">
+                                            <div class="texts">
+                                                <h3>衛生面も心配なし</h3>
+                                                <p>バスの中に礼拝マットを敷き、その上で礼拝していただくことで、衛生面への心配は必要ありません。</p>
+                                            </div>
+                                        </div>
+                                        <div class="block">
+                                            <img src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/d957d80a-5048-4613-a09a-7d204d9a0ba4"
+                                                alt="">
+                                            <div class="texts">
+                                                <h3>メッカの方向が分かる</h3>
+                                                <p>バスのなかにはコンパスがおいてあり、メッカの方向を確認できます。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="effect" class="fadeUpTrigger">
+                                    <div class="texts">
+                                        <h2>レイバスで<br class="responsive">快適な未来を</h2>
+                                        <p>私たちはこの「レイバス」を通して、ムスリムの快適な観光を実現するだけでなく、日本人が多文化に触れる機会や、イベント側の来客の増加に繋げたいと考えています。
+                                        </p>
+                                    </div>
+                                    <img src="https://github.com/Chutoubu-TeamE/reibus/assets/120165765/36ebc5ac-27db-4f78-b301-284d05d6b54e"
+                                        alt="">
+                                </div>
+                                <footer>
+                                    <p>©︎ 中等部チームE, 2023</p>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

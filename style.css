@@ -1,0 +1,756 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;600&display=swap');
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+#splash {
+    /*fixedで全面に固定*/
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    color: #fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    width: 100%;
+}
+
+/*IE11対策用バーの線の高さ※対応しなければ削除してください*/
+#splash_text svg {
+    height: 2px;
+}
+
+/*割れる画面のアニメーション*/
+.loader_cover {
+    width: 100%;
+    height: 50%;
+    background-color: #333;
+    transition: all .2s cubic-bezier(.04, .435, .315, .9);
+    transform: scaleY(1);
+}
+
+/*上の画面*/
+.loader_cover-up {
+    transform-origin: center top;
+}
+
+/*下の画面*/
+.loader_cover-down {
+    position: absolute;
+    bottom: 0;
+    transform-origin: center bottom;
+}
+
+/*クラス名がついたらY軸方向に0*/
+.coveranime {
+    transform: scaleY(0);
+}
+
+/* fadeUp */
+
+.fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+
+.fadeUpTrigger {
+    opacity: 0;
+}
+
+/* ここから */
+body {
+    background-color: #f8f4e6;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+.responsive {
+    display: none;
+}
+
+/* ===== メニューを横から出現させる ===== */
+.menu-container {
+    display: flex;
+}
+
+.menu {
+    z-index: 3;
+    position: fixed;
+    display: none;
+    left: 0;
+    transition: all .6s;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(247, 189, 143, 0.9);
+    transform: translateX(-1100px);
+}
+
+.menu-active {
+    transform: translateX(0px);
+}
+
+.menu .menu-link {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 250px;
+}
+
+.menu .menu-link li {
+    list-style: none;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.menu .menu-link li a {
+    text-decoration: none;
+    color: black;
+    transition: all .3s;
+}
+
+.menu .menu-link li a:hover {
+    opacity: 0.5;
+}
+
+/* header */
+header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+header .wrapper {
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-shadow: 1px 1px 8px white;
+}
+
+header .wrapper h1 {
+    font-size: 1.6rem;
+}
+
+header .wrapper ul {
+    width: 28%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+header .wrapper ul a {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    /* text-shadow: 0 0 3px black; */
+    transition: .3s;
+}
+
+header .wrapper ul a:hover {
+    opacity: 0.5;
+}
+
+/* main */
+
+/* mainvisual */
+#mainvisual {
+    /* 背景はパララックス */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://github.com/Chutoubu-TeamE/reibus/assets/120165765/925b5caf-fc5f-40af-8f77-c74fe95821fa");
+}
+
+#mainvisual:before {
+    /*header の疑似要素に背景画像を指定*/
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 1800px;
+}
+
+#mainvisual .title-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 0;
+    top: 50%;
+    left: 38%;
+    transform: translateY(-50%) translateX(-50%);
+    color: white;
+    text-shadow: 1px 1px 8px black;
+}
+
+#mainvisual .title-container p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-right: 20px;
+}
+
+#mainvisual .title-container h1 {
+    /* 文字はfixed、常に後ろにある */
+    font-size: 3.5rem;
+    /* text-shadow: 0 0 15px black; */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    /*以下はレイアウトのための記述*/
+    /* background: #fff; */
+    background-color: #f8f4e6;
+    padding-top: 200px;
+}
+
+/* problem */
+/* problemにrelative */
+#problem {
+    height: 435px;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#problem .texts {
+    width: 55%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+#problem img {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+#problem .img-1 {
+    height: 350px;
+    width: 225px;
+    bottom: 0%;
+    right: 0%;
+}
+
+#problem .img-2 {
+    height: 150px;
+    width: 250px;
+    bottom: 5%;
+    right: 25%;
+}
+
+#problem .texts h2 {
+    margin-bottom: 20px;
+}
+
+#problem .texts p {
+    line-height: 1.8rem;
+}
+
+/* パララックスコンテナ */
+/* .parallax-container{
+    margin-top: 250px;
+} */
+
+/* データ */
+#data {
+    width: 50%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+#data img {
+    width: 55%;
+}
+
+#data .texts {
+    margin-left: 30px;
+}
+
+#data .texts h2 {
+    margin-bottom: 20px;
+}
+
+#data .texts p {
+    line-height: 1.8rem;
+}
+
+/* 波 */
+/* 波のopaticyを1にして、背景を0にする必要あり */
+.wave-container {
+    padding-top: 100px;
+    z-index: 2;
+    position: sticky;
+    top: 0;
+}
+
+.wave {
+    position: relative;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.second-wrapper {
+    background-color: #fddea5;
+    padding: 100px 0px 40px 0px;
+}
+
+.test {
+    background-color: pink;
+}
+
+/* アイデア */
+#idea {
+    width: 55%;
+    margin: 0 auto;
+}
+
+#idea .texts {
+    margin-bottom: 40px;
+}
+
+#idea .texts h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#idea .texts p {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.8rem;
+}
+
+#idea .model-wrap{
+    height: 450px;
+    border-radius: 20px;
+    border: 4px #f7bd8f solid;
+}
+
+#idea .model {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+/* 特徴 */
+#feature {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 250px;
+}
+
+#feature h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#feature .wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#feature .wrapper .block {
+    width: 30%;
+}
+
+#feature .wrapper .block img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+#feature .wrapper .block .texts {
+    margin-top: 10px;
+    padding: 0px 8px;
+}
+
+#feature .wrapper .block .texts p {
+    margin-top: 5px;
+    line-height: 1.5rem;
+}
+
+/* 影響 */
+#effect {
+    height: 600px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 300px;
+    position: relative;
+}
+
+#effect .texts {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 35%;
+    z-index: 2;
+    text-shadow: 1px 1px 8px white;
+}
+
+#effect .texts h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+#effect .texts p {
+    line-height: 1.8rem;
+}
+
+#effect img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* フッター */
+footer {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/*==================================================
+　5-2-8 3本線が横方向に回転して×に
+===================================*/
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.btn-wrapper .openbtn {
+    margin-right: 15px;
+    display: none;
+}
+
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+.openbtn {
+    /*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+    position: relative;
+    background: black;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+/*ボタン内側*/
+.openbtn .openbtn-area {
+    transition: all .6s;
+    /*アニメーションの設定*/
+    width: 40px;
+    height: 40px;
+}
+
+.openbtn span {
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 11px;
+    height: 3px;
+    border-radius: 2px;
+    background: #fff;
+    width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+    top: 12px;
+}
+
+.openbtn span:nth-of-type(2) {
+    top: 19px;
+}
+
+.openbtn span:nth-of-type(3) {
+    top: 26px;
+}
+
+/*activeクラスが付与されると .openbtn-areaが360度回転し、その中の線が回転して×に*/
+.openbtn.active .openbtn-area {
+    transform: rotate(360deg);
+}
+
+.openbtn.active span:nth-of-type(1) {
+    top: 13px;
+    left: 13px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 40%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+    opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3) {
+    top: 25px;
+    left: 13px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 40%;
+}
+
+@media screen and (max-width:1025px) {
+
+    .menu {
+        display: block;
+    }
+
+    header #page-link {
+        display: none;
+    }
+
+    #mainvisual .title-container {
+        display: block;
+        left: 50%;
+    }
+
+    /* メニュー */
+    .btn-wrapper .openbtn {
+        display: block;
+    }
+
+    /* 課題 */
+    #problem {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #problem .img-2 {
+        display: none;
+    }
+
+    #problem,
+    #problem .texts,
+    #problem img {
+        position: static;
+    }
+
+    /* 根拠 */
+    #data {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width:840px) {
+
+    #mainvisual {
+        height: 300px;
+        background-attachment: scroll;
+    }
+
+    #mainvisual .title-container {
+        position: static;
+        transform: translateX(0px) translateY(0px);
+    }
+
+    #data,
+    .wave-container {
+        position: static;
+    }
+
+    #data {
+        min-height: auto;
+        height: 500px;
+    }
+
+    #idea {
+        width: 70%;
+    }
+
+    #idea .texts p {
+        width: 100%;
+        padding: 0px 8px;
+    }
+
+    #feature .wrapper {
+        display: block;
+    }
+
+    #feature .wrapper .block {
+        width: 100%;
+    }
+
+    #feature .wrapper .block .texts {
+        padding: 20px 8px 100px 8px;
+    }
+
+    #effect {
+        margin-top: 150px;
+        position: static;
+        height: auto;
+    }
+
+    #effect img,
+    #effect .texts {
+        position: static;
+    }
+
+    #effect .texts {
+        width: 100%;
+        padding: 0px 8px;
+        text-shadow: none;
+    }
+
+    #effect .texts h2 {
+        text-align: center;
+    }
+
+    #effect img {
+        margin-top: 30px;
+    }
+
+}
+
+@media screen and (max-width:750px) {
+
+    .texts p {
+        font-size: 0.8rem;
+    }
+
+    #idea .texts p {
+        font-size: 0.8rem;
+    }
+
+    #problem {
+        display: block;
+        height: auto;
+    }
+
+    #problem .texts,
+    #problem .img-1 {
+        width: 100%;
+    }
+
+    #problem .texts {
+        margin-bottom: 30px;
+    }
+
+    #data {
+        display: block;
+        height: auto;
+        margin-top: 150px;
+    }
+
+    #data img {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+
+    .responsive {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width:390px) {
+
+    #mainvisual p {
+        display: none;
+    }
+
+    .menu .menu-link {
+        margin-top: 175px;
+    }
+
+    .menu .menu-link li a {
+        font-size: 1.4rem;
+    }
+
+    .content {
+        padding-top: 100px;
+    }
+
+    #mainvisual .title-container h1 {
+        font-size: 2rem;
+    }
+
+    #problem,
+    #data,
+    #idea,
+    #feature,
+    #effect {
+        width: 90%;
+    }
+
+    #idea .model-wrap{
+        height: 300px;
+    }
+
+    #data .texts {
+        margin-left: 0px;
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    #effect img {
+        height: 300px;
+    }
+
+}
+
+/* 12/14 やること：スマホのレスポンシブ、画像発注、文章考案、英語版作成、リンク化 */
